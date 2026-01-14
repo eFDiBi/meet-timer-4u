@@ -1,0 +1,132 @@
+/* Estilos para el Widget Flotante de Meet Timer */
+
+:root {
+  --mt-overlay-bg: #202124; /* Gris oscuro estilo Google Meet */
+  --mt-text-color: #ffffff;
+  --mt-text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  --mt-bg-image: none;
+}
+
+#mt-ext-root {
+  position: fixed;
+  /* Posición inicial por defecto (arriba a la derecha) */
+  top: 80px; 
+  right: 20px;
+  
+  width: 320px; /* Tamaño contenido, manejable */
+  height: auto;
+  min-height: 150px;
+  z-index: 99999;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: var(--mt-overlay-bg);
+  background-image: var(--mt-bg-image);
+  background-size: cover;
+  background-position: center;
+  
+  /* Bordes redondeados y sombra para efecto "flotante" */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  
+  /* Cursor para indicar que se puede mover */
+  cursor: move; 
+  user-select: none; /* Evita seleccionar texto al arrastrar */
+  transition: transform 0.1s, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* Efecto al pasar el mouse para indicar interactividad */
+#mt-ext-root:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.mt-ext-timer {
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 4rem; 
+  font-weight: 500;
+  color: var(--mt-text-color);
+  text-shadow: var(--mt-text-shadow);
+  
+  background-color: rgba(0, 0, 0, 0.3); 
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  margin: 0;
+  pointer-events: none; 
+}
+
+/* Botón de Cerrar (La X) */
+.mt-ext-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  
+  /* CAMBIOS AQUI: Alto contraste */
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000;            /* X negra */
+  /* Sombra suave para que el circulo se vea incluso sobre fondo blanco */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+  
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Oculto por defecto */
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.mt-ext-close-btn:hover {
+  background-color: #d93025; /* Rojo al pasar el mouse */
+  color: #ffffff;            /* Blanco al pasar el mouse */
+}
+
+/* Clase para hacerlo visible cuando termine el timer */
+.mt-ext-close-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Estado: Urgencia */
+.mt-ext-timer--urgent {
+  color: #f28b82; 
+  animation: mt-pulse 1s infinite;
+}
+
+/* Estado: Finalizado */
+.mt-ext-timer--finished {
+  color: #f78b82;
+  font-size: 2.5rem; 
+  text-align: center;
+}
+
+@keyframes mt-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.mt-ext-audio-frame {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
