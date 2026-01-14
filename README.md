@@ -12,9 +12,9 @@ A lightweight, professional Chrome Extension designed to manage time effectively
 - Clean UI: Shows "TIEMPO CUMPLIDO" (Time's Up) with a close button (X) only when the timer finishes.
 - Smart Persistence: Remembers your settings for the next meeting.
 
-## 📥 Descarga
+## 📥 Download
 
-[**Descargar Última Versión (.zip)**](https://github.com/eFDiBi/meet-timer-4u/releases/download/latest/meet-timer-4u.zip)
+[**Latest Version (.zip)**](https://github.com/eFDiBi/meet-timer-4u/releases/download/latest/meet-timer-4u.zip)
 
 ## 📥 Installation
 This extension is currently distributed as a developer package (side-loaded). Please refer to the installation guide in your preferred language:
