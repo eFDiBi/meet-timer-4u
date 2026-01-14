@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuración Meet Timer</title>
+  <style>
+    :root { --primary: #1a73e8; --danger: #d93025; --bg: #f8f9fa; }
+    body { font-family: 'Segoe UI', Roboto, sans-serif; width: 320px; padding: 16px; background-color: var(--bg); margin: 0; }
+    header { margin-bottom: 16px; border-bottom: 1px solid #e0e0e0; padding-bottom: 8px; }
+    h2 { margin: 0; font-size: 16px; color: #3c4043; }
+    
+    .control-group { margin-bottom: 16px; }
+    label { display: block; font-size: 12px; font-weight: 600; color: #5f6368; margin-bottom: 6px; }
+    input { width: 100%; padding: 8px 10px; border: 1px solid #dadce0; border-radius: 6px; box-sizing: border-box; font-size: 14px; transition: border 0.2s; }
+    input:focus { outline: none; border-color: var(--primary); }
+    
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+    button { padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+    
+    .btn-primary { background-color: var(--primary); color: white; }
+    .btn-primary:hover { background-color: #1558b0; }
+    
+    .btn-danger { background-color: white; color: var(--danger); border: 1px solid var(--danger); }
+    .btn-danger:hover { background-color: #fce8e6; }
+
+    .hint { font-size: 11px; color: #70757a; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Meet Timer Pro</h2>
+  </header>
+  
+  <main>
+    <div class="control-group">
+      <label for="minutes">Duración (minutos)</label>
+      <input type="number" id="minutes" value="3" min="1">
+    </div>
+
+    <div class="control-group">
+      <label for="bgUrl">URL Imagen de Fondo</label>
+      <input type="url" id="bgUrl" placeholder="https://...">
+    </div>
+
+    <div class="control-group">
+      <label for="musicUrl">URL Música (YouTube)</label>
+      <input type="url" id="musicUrl" placeholder="https://youtube.com/...">
+      <div class="hint">El video se reproducirá en segundo plano.</div>
+    </div>
+
+    <div class="actions">
+      <button id="btn-stop" class="btn-danger">DETENER</button>
+      <button id="btn-start" class="btn-primary">INICIAR</button>
+    </div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
