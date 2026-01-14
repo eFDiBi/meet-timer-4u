@@ -1,0 +1,41 @@
+name: Package & Release Extension
+
+# Se ejecuta cuando se hace push (o merge) a la rama main
+on:
+  push:
+    branches:
+      - main
+
+# Permisos necesarios para crear releases y subir archivos
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    # El token de GitHub se inyecta automáticamente para autenticar los comandos 'gh'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    steps:
+      # 1. Obtener el código
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Crear el archivo ZIP
+      - name: Zip Extension Files
+        run: |
+          zip -r meet-timer-4u.zip manifest.json popup.html popup.js content.js styles.css icon.png README.md docs/
+
+      # 3. Crear (o reemplazar) la Release "latest"
+      # Usamos '|| true' para que no falle si es la primera vez (y no hay nada que borrar)
+      - name: Update Latest Release
+        run: |
+          gh release delete latest --cleanup-tag --yes || true
+          sleep 4 # Pequeña pausa para asegurar que GitHub procese el borrado
+          gh release create latest meet-timer-4u.zip \
+            --title "Latest Build" \
+            --notes "Versión generada automáticamente desde la última actualización en main." \
+            --target main \
+            --latest
