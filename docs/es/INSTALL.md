@@ -5,7 +5,7 @@ Esta extensión no está publicada en la Chrome Web Store, por lo que debe insta
 ## Pasos para instalar
 
 ### 1. Descargar y Preparar
-Descarga el archivo .zip de esta extensión (o clona el repositorio).
+[Descarga el archivo .zip](https://github.com/eFDiBi/meet-timer-4u/blob/main/README.md#-download) de esta extensión (o clona el repositorio).
 
 Descomprime el archivo en una carpeta de tu computadora.
 
